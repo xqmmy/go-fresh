@@ -1,0 +1,183 @@
+2020-11-18 16:24:16.350 | INFO     | __main__:serve:85 - 启动服务: 192.168.0.103:63591
+2020-11-18 16:24:16.353 | INFO     | __main__:serve:88 - 服务注册开始
+2020-11-18 16:24:16.359 | INFO     | __main__:serve:95 - 服务注册成功
+2020-11-18 16:40:29.289 | ERROR    | grpc._server:_call_behavior:435 - An error has been caught in function '_call_behavior', process 'MainProcess' (64140), thread 'ThreadPoolExecutor-0_0' (72976):
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000002143AE45F70>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x000002143AE45CA0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+    │    │        │    └ (<weakref at 0x000002143CFF05E0; to 'ThreadPoolExecutor' at 0x000002143CE70F70>, <_queue.SimpleQueue object at 0x000002143CE7...
+    │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+    │    └ <function _worker at 0x000002143CE7CB80>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\concurrent\futures\thread.py", line 80, in _worker
+    work_item.run()
+    │         └ <function _WorkItem.run at 0x000002143CE7CCA0>
+    └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF040>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\concurrent\futures\thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │    │   │    │       │    └ {}
+             │    │   │    │       └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF040>
+             │    │   │    └ [<grpc._cython.cygrpc.RequestCallEvent object at 0x000002143D0B6F40>, <grpc._server._RPCState object at 0x000002143D0CF070>, ...
+             │    │   └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF040>
+             │    └ <function _unary_response_in_pool at 0x000002143CEBF550>
+             └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF040>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\grpc\_server.py", line 552, in _unary_response_in_pool
+    response, proceed = _call_behavior(rpc_event, state, behavior,
+                        │              │          │      └ <bound method OrderServicer.CreateOrder of <order_srv.handler.order.OrderServicer object at 0x000002143CE98880>>
+                        │              │          └ <grpc._server._RPCState object at 0x000002143D0CF070>
+                        │              └ <grpc._cython.cygrpc.RequestCallEvent object at 0x000002143D0B6F40>
+                        └ <function _call_behavior at 0x000002143CEBF160>
+
+> File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\grpc\_server.py", line 435, in _call_behavior
+    response_or_iterator = behavior(argument, context)
+                           │        │         └ <grpc._server._Context object at 0x000002143D0CF0D0>
+                           │        └ userId: 1
+                           │          address: "test"
+                           │          mobile: "18787878787"
+                           │          name: "bobby"
+                           │          post: "tewtt"
+                           │          
+                           └ <bound method OrderServicer.CreateOrder of <order_srv.handler.order.OrderServicer object at 0x000002143CE98880>>
+
+  File "C:\Users\Administrator\PycharmProjects\mxshop_srvs\order_srv\handler\order.py", line 191, in CreateOrder
+    goods_srv_host, goods_srv_port = register.filter_service(f'Service=="{settings.GOODS_SRV_NAME}"')
+                                     │        └ <function ConsulRegister.filter_service at 0x000002143CDF2940>
+                                     └ <common.register.consul.ConsulRegister object at 0x000002143D0CF8E0>
+
+ValueError: not enough values to unpack (expected 2, got 0)
+2020-11-18 16:41:03.822 | ERROR    | grpc._server:_call_behavior:435 - An error has been caught in function '_call_behavior', process 'MainProcess' (64140), thread 'ThreadPoolExecutor-0_0' (72976):
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000002143AE45F70>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x000002143AE45CA0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+    │    │        │    └ (<weakref at 0x000002143CFF05E0; to 'ThreadPoolExecutor' at 0x000002143CE70F70>, <_queue.SimpleQueue object at 0x000002143CE7...
+    │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+    │    └ <function _worker at 0x000002143CE7CB80>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\concurrent\futures\thread.py", line 80, in _worker
+    work_item.run()
+    │         └ <function _WorkItem.run at 0x000002143CE7CCA0>
+    └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF550>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\concurrent\futures\thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │    │   │    │       │    └ {}
+             │    │   │    │       └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF550>
+             │    │   │    └ [<grpc._cython.cygrpc.RequestCallEvent object at 0x000002143D0B6E50>, <grpc._server._RPCState object at 0x000002143D0CF220>, ...
+             │    │   └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF550>
+             │    └ <function _unary_response_in_pool at 0x000002143CEBF550>
+             └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF550>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\grpc\_server.py", line 552, in _unary_response_in_pool
+    response, proceed = _call_behavior(rpc_event, state, behavior,
+                        │              │          │      └ <bound method OrderServicer.CreateOrder of <order_srv.handler.order.OrderServicer object at 0x000002143CE98880>>
+                        │              │          └ <grpc._server._RPCState object at 0x000002143D0CF220>
+                        │              └ <grpc._cython.cygrpc.RequestCallEvent object at 0x000002143D0B6E50>
+                        └ <function _call_behavior at 0x000002143CEBF160>
+
+> File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\grpc\_server.py", line 435, in _call_behavior
+    response_or_iterator = behavior(argument, context)
+                           │        │         └ <grpc._server._Context object at 0x000002143D0CFC40>
+                           │        └ userId: 1
+                           │          address: "test"
+                           │          mobile: "18787878787"
+                           │          name: "bobby"
+                           │          post: "tewtt"
+                           │          
+                           └ <bound method OrderServicer.CreateOrder of <order_srv.handler.order.OrderServicer object at 0x000002143CE98880>>
+
+  File "C:\Users\Administrator\PycharmProjects\mxshop_srvs\order_srv\handler\order.py", line 191, in CreateOrder
+    goods_srv_host, goods_srv_port = register.filter_service(f'Service=="{settings.GOODS_SRV_NAME}"')
+                                     │        └ <function ConsulRegister.filter_service at 0x000002143CDF2940>
+                                     └ <common.register.consul.ConsulRegister object at 0x000002143D0D4A30>
+
+ValueError: not enough values to unpack (expected 2, got 0)
+2020-11-18 16:41:27.203 | ERROR    | grpc._server:_call_behavior:435 - An error has been caught in function '_call_behavior', process 'MainProcess' (64140), thread 'ThreadPoolExecutor-0_0' (72976):
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000002143AE45F70>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x000002143AE45CA0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+    │    │        │    └ (<weakref at 0x000002143CFF05E0; to 'ThreadPoolExecutor' at 0x000002143CE70F70>, <_queue.SimpleQueue object at 0x000002143CE7...
+    │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+    │    └ <function _worker at 0x000002143CE7CB80>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 72976)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\concurrent\futures\thread.py", line 80, in _worker
+    work_item.run()
+    │         └ <function _WorkItem.run at 0x000002143CE7CCA0>
+    └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF400>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\concurrent\futures\thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │    │   │    │       │    └ {}
+             │    │   │    │       └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF400>
+             │    │   │    └ [<grpc._cython.cygrpc.RequestCallEvent object at 0x000002143D0B6F40>, <grpc._server._RPCState object at 0x000002143D0D4970>, ...
+             │    │   └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF400>
+             │    └ <function _unary_response_in_pool at 0x000002143CEBF550>
+             └ <concurrent.futures.thread._WorkItem object at 0x000002143D0CF400>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\grpc\_server.py", line 552, in _unary_response_in_pool
+    response, proceed = _call_behavior(rpc_event, state, behavior,
+                        │              │          │      └ <bound method OrderServicer.CreateOrder of <order_srv.handler.order.OrderServicer object at 0x000002143CE98880>>
+                        │              │          └ <grpc._server._RPCState object at 0x000002143D0D4970>
+                        │              └ <grpc._cython.cygrpc.RequestCallEvent object at 0x000002143D0B6F40>
+                        └ <function _call_behavior at 0x000002143CEBF160>
+
+> File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\grpc\_server.py", line 435, in _call_behavior
+    response_or_iterator = behavior(argument, context)
+                           │        │         └ <grpc._server._Context object at 0x000002143D0CF7C0>
+                           │        └ userId: 1
+                           │          address: "test"
+                           │          mobile: "18787878787"
+                           │          name: "bobby"
+                           │          post: "tewtt"
+                           │          
+                           └ <bound method OrderServicer.CreateOrder of <order_srv.handler.order.OrderServicer object at 0x000002143CE98880>>
+
+  File "C:\Users\Administrator\PycharmProjects\mxshop_srvs\order_srv\handler\order.py", line 191, in CreateOrder
+    goods_srv_host, goods_srv_port = register.filter_service(f'Service=="{settings.GOODS_SRV_NAME}"')
+                                     │        └ <function ConsulRegister.filter_service at 0x000002143CDF2940>
+                                     └ <common.register.consul.ConsulRegister object at 0x000002143D292F40>
+
+ValueError: not enough values to unpack (expected 2, got 0)

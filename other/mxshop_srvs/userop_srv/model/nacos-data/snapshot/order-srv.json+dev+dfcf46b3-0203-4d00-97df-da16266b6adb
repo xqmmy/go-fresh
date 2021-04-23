@@ -1,0 +1,21 @@
+{
+    "name":"order-srv",
+    "tags":["imooc", "bobby", "python", "order", "srv"],
+    "mysql":{
+        "db":"mxshop_userop_srv",
+        "host":"192.168.0.104",
+        "port":3306,
+        "user":"root",
+        "password":"root"
+    },
+    "goods_srv":{
+        "name":"goods-srv"
+    },
+    "inventory_srv":{
+        "name":"inventory-srv"
+    },
+    "consul":{
+        "host":"192.168.0.104",
+        "port":8500
+    }
+}

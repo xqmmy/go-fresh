@@ -1,0 +1,67 @@
+2020-11-18 17:14:07.339 | INFO     | __main__:serve:85 - ��������: 192.168.0.103:65363
+2020-11-18 17:14:07.343 | INFO     | __main__:serve:88 - ����ע�Ὺʼ
+2020-11-18 17:14:07.348 | INFO     | __main__:serve:95 - ����ע��ɹ�
+2020-11-18 17:14:28.681 | ERROR    | grpc._server:_call_behavior:435 - An error has been caught in function '_call_behavior', process 'MainProcess' (81724), thread 'ThreadPoolExecutor-0_0' (100480):
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    ��    �� <function Thread._bootstrap_inner at 0x000001ABFF6B2DC0>
+    �� <Thread(ThreadPoolExecutor-0_0, started daemon 100480)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    ��    �� <function Thread.run at 0x000001ABFF6B2AF0>
+    �� <Thread(ThreadPoolExecutor-0_0, started daemon 100480)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    ��    ��        ��    ��        ��    �� {}
+    ��    ��        ��    ��        �� <Thread(ThreadPoolExecutor-0_0, started daemon 100480)>
+    ��    ��        ��    �� (<weakref at 0x000001AB82C8C270; to 'ThreadPoolExecutor' at 0x000001AB82B02F10>, <_queue.SimpleQueue object at 0x000001AB82B1...
+    ��    ��        �� <Thread(ThreadPoolExecutor-0_0, started daemon 100480)>
+    ��    �� <function _worker at 0x000001AB82B12820>
+    �� <Thread(ThreadPoolExecutor-0_0, started daemon 100480)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\concurrent\futures\thread.py", line 80, in _worker
+    work_item.run()
+    ��         �� <function _WorkItem.run at 0x000001AB82B12940>
+    �� <concurrent.futures.thread._WorkItem object at 0x000001AB82D82D30>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\concurrent\futures\thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ��    ��   ��    ��       ��    �� {}
+             ��    ��   ��    ��       �� <concurrent.futures.thread._WorkItem object at 0x000001AB82D82D30>
+             ��    ��   ��    �� [<grpc._cython.cygrpc.RequestCallEvent object at 0x000001AB8184D360>, <grpc._server._RPCState object at 0x000001AB82B6AD00>, ...
+             ��    ��   �� <concurrent.futures.thread._WorkItem object at 0x000001AB82D82D30>
+             ��    �� <function _unary_response_in_pool at 0x000001AB82B51310>
+             �� <concurrent.futures.thread._WorkItem object at 0x000001AB82D82D30>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\grpc\_server.py", line 552, in _unary_response_in_pool
+    response, proceed = _call_behavior(rpc_event, state, behavior,
+                        ��              ��          ��      �� <bound method OrderServicer.OrderList of <userop_srv.handler.order.OrderServicer object at 0x000001AB82B28730>>
+                        ��              ��          �� <grpc._server._RPCState object at 0x000001AB82B6AD00>
+                        ��              �� <grpc._cython.cygrpc.RequestCallEvent object at 0x000001AB8184D360>
+                        �� <function _call_behavior at 0x000001AB82B4FEE0>
+
+> File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\grpc\_server.py", line 435, in _call_behavior
+    response_or_iterator = behavior(argument, context)
+                           ��        ��         �� <grpc._server._Context object at 0x000001AB82D82B80>
+                           ��        �� userId: 1
+                           ��          
+                           �� <bound method OrderServicer.OrderList of <userop_srv.handler.order.OrderServicer object at 0x000001AB82B28730>>
+
+  File "C:\Users\Administrator\PycharmProjects\mxshop_srvs\userop_srv\handler\order.py", line 115, in OrderList
+    tmp_rsp.mobile = order.signer_mobile
+    ��       ��        �� <OrderInfo: 4>
+    ��       �� <google.protobuf.internal.python_message._FieldProperty object at 0x000001AB819B4950>
+    �� id: 4
+      userId: 1
+      orderSn: "20201118171410162"
+      payType: "alipay"
+      status: "paying"
+      post: "\350\257\267\345\260\275\345\277\253\3...
+
+AttributeError: 'OrderInfo' object has no attribute 'signer_mobile'
+2020-11-18 17:15:35.248 | INFO     | __main__:on_exit:26 - ע�� 6940a6b0-297e-11eb-be7b-40b0760ebfa7 ����
+2020-11-18 17:15:35.253 | INFO     | __main__:on_exit:28 - ע���ɹ�

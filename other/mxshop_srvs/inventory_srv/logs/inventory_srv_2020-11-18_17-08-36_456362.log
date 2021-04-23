@@ -1,0 +1,347 @@
+2020-11-18 17:08:36.464 | INFO     | __main__:serve:85 - 启动服务: 192.168.0.103:65174
+2020-11-18 17:08:36.467 | INFO     | __main__:serve:88 - 服务注册开始
+2020-11-18 17:08:36.471 | INFO     | __main__:serve:95 - 服务注册成功
+2020-11-19 13:29:47.612 | ERROR    | grpc._server:_call_behavior:435 - An error has been caught in function '_call_behavior', process 'MainProcess' (70304), thread 'ThreadPoolExecutor-0_0' (96108):
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 705, in _write_bytes
+    self._sock.sendall(data)
+    │    │             └ b'\xd9\x00\x00\x00\x03SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, ...
+    │    └ None
+    └ <pymysql.connections.Connection object at 0x00000219B33769D0>
+
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 3099, in execute_sql
+    cursor.execute(sql, params or ())
+    │      │       │    └ [False, 423, 1, 0]
+    │      │       └ 'SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, `t1`.`version` FROM `...
+    │      └ <function Cursor.execute at 0x00000219B221F280>
+    └ <pymysql.cursors.Cursor object at 0x00000219B3504D90>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\cursors.py", line 163, in execute
+    result = self._query(query)
+             │    │      └ 'SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, `t1`.`version` FROM `...
+             │    └ <function Cursor._query at 0x00000219B221F700>
+             └ <pymysql.cursors.Cursor object at 0x00000219B3504D90>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+    │    │     └ 'SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, `t1`.`version` FROM `...
+    │    └ <function Connection.query at 0x00000219B224B700>
+    └ <pymysql.connections.Connection object at 0x00000219B33769D0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 504, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+    │    │                │       │          └ b'SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, `t1`.`version` FROM ...
+    │    │                │       └ 3
+    │    │                └ <module 'pymysql.constants.COMMAND' from 'C:\\Users\\Administrator\\Envs\\mxshop_srv\\lib\\site-packages\\pymysql\\constants\...
+    │    └ <function Connection._execute_command at 0x00000219B224BE50>
+    └ <pymysql.connections.Connection object at 0x00000219B33769D0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 763, in _execute_command
+    self._write_bytes(packet)
+    │    │            └ b'\xd9\x00\x00\x00\x03SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, ...
+    │    └ <function Connection._write_bytes at 0x00000219B224BCA0>
+    └ <pymysql.connections.Connection object at 0x00000219B33769D0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 708, in _write_bytes
+    raise err.OperationalError(
+          │   └ <class 'pymysql.err.OperationalError'>
+          └ <module 'pymysql.err' from 'C:\\Users\\Administrator\\Envs\\mxshop_srv\\lib\\site-packages\\pymysql\\err.py'>
+
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))")
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\playhouse\shortcuts.py", line 211, in execute_sql
+    return super(ReconnectMixin, self).execute_sql(sql, params, commit)
+                 │               │                 │    │       └ <object object at 0x00000219B1AB8A20>
+                 │               │                 │    └ [False, 423, 1, 0]
+                 │               │                 └ 'SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, `t1`.`version` FROM `...
+                 │               └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+                 └ <class 'playhouse.shortcuts.ReconnectMixin'>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 3106, in execute_sql
+    self.commit()
+    │    └ <function Database.commit at 0x00000219B2280E50>
+    └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 2873, in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+    │       │         │        │           │          └ <traceback object at 0x00000219B33A8D00>
+    │       │         │        │           └ (2006, "MySQL server has gone away (ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))")
+    │       │         │        └ OperationalError(2006, "MySQL server has gone away (ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))")
+    │       │         └ <class 'peewee.OperationalError'>
+    │       └ <class 'peewee.OperationalError'>
+    └ <function reraise at 0x00000219B224ED30>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 183, in reraise
+    raise value.with_traceback(tb)
+          │     │              └ <traceback object at 0x00000219B33A8D00>
+          │     └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError(2006, "MySQL server has gone away (ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))")
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 3099, in execute_sql
+    cursor.execute(sql, params or ())
+    │      │       │    └ [False, 423, 1, 0]
+    │      │       └ 'SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, `t1`.`version` FROM `...
+    │      └ <function Cursor.execute at 0x00000219B221F280>
+    └ <pymysql.cursors.Cursor object at 0x00000219B3504D90>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\cursors.py", line 163, in execute
+    result = self._query(query)
+             │    │      └ 'SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, `t1`.`version` FROM `...
+             │    └ <function Cursor._query at 0x00000219B221F700>
+             └ <pymysql.cursors.Cursor object at 0x00000219B3504D90>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+    │    │     └ 'SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, `t1`.`version` FROM `...
+    │    └ <function Connection.query at 0x00000219B224B700>
+    └ <pymysql.connections.Connection object at 0x00000219B33769D0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 504, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+    │    │                │       │          └ b'SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, `t1`.`version` FROM ...
+    │    │                │       └ 3
+    │    │                └ <module 'pymysql.constants.COMMAND' from 'C:\\Users\\Administrator\\Envs\\mxshop_srv\\lib\\site-packages\\pymysql\\constants\...
+    │    └ <function Connection._execute_command at 0x00000219B224BE50>
+    └ <pymysql.connections.Connection object at 0x00000219B33769D0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 763, in _execute_command
+    self._write_bytes(packet)
+    │    │            └ b'\xd9\x00\x00\x00\x03SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, ...
+    │    └ <function Connection._write_bytes at 0x00000219B224BCA0>
+    └ <pymysql.connections.Connection object at 0x00000219B33769D0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 708, in _write_bytes
+    raise err.OperationalError(
+          │   └ <class 'pymysql.err.OperationalError'>
+          └ <module 'pymysql.err' from 'C:\\Users\\Administrator\\Envs\\mxshop_srv\\lib\\site-packages\\pymysql\\err.py'>
+
+peewee.OperationalError: (2006, "MySQL server has gone away (ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))")
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\PycharmProjects\mxshop_srvs\inventory_srv\handler\inventory.py", line 25, in Sell
+    goods_inv = Inventory.get(Inventory.goods==item.goodsId)
+                │         │   │         │      │    └ <google.protobuf.internal.python_message._FieldProperty object at 0x00000219B20BC360>
+                │         │   │         │      └ goodsId: 423
+                │         │   │         │        num: 5
+                │         │   │         │        
+                │         │   │         └ <peewee.FieldAccessor object at 0x00000219B24BA760>
+                │         │   └ <Model: Inventory>
+                │         └ <classmethod object at 0x00000219B2298B50>
+                └ <Model: Inventory>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 6384, in get
+    return sq.get()
+           │  └ <function BaseModelSelect.get at 0x00000219B22A44C0>
+           └ <peewee.ModelSelect object at 0x00000219B3504CA0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 6807, in get
+    return clone.execute(database)[0]
+           │     │       └ None
+           │     └ <function BaseQuery.execute at 0x00000219B22699D0>
+           └ <peewee.ModelSelect object at 0x00000219B3504D60>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 1886, in inner
+    return method(self, database, *args, **kwargs)
+           │      │     │          │       └ {}
+           │      │     │          └ ()
+           │      │     └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+           │      └ <peewee.ModelSelect object at 0x00000219B3504D60>
+           └ <function BaseQuery.execute at 0x00000219B2269940>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 1957, in execute
+    return self._execute(database)
+           │    │        └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+           │    └ <function SelectBase._execute at 0x00000219B226D160>
+           └ <peewee.ModelSelect object at 0x00000219B3504D60>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 2129, in _execute
+    cursor = database.execute(self)
+             │        │       └ <peewee.ModelSelect object at 0x00000219B3504D60>
+             │        └ <function Database.execute at 0x00000219B22801F0>
+             └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 3112, in execute
+    return self.execute_sql(sql, params, commit=commit)
+           │    │           │    │              └ <object object at 0x00000219B1AB8A20>
+           │    │           │    └ [False, 423, 1, 0]
+           │    │           └ 'SELECT `t1`.`id`, `t1`.`add_time`, `t1`.`is_deleted`, `t1`.`update_time`, `t1`.`goods`, `t1`.`stocks`, `t1`.`version` FROM `...
+           │    └ <function ReconnectMixin.execute_sql at 0x00000219B24AAA60>
+           └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\playhouse\shortcuts.py", line 225, in execute_sql
+    self.close()
+    │    └ <function Database.close at 0x00000219B227DDC0>
+    └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 3053, in close
+    raise OperationalError('Attempting to close database while '
+          └ <class 'peewee.OperationalError'>
+
+peewee.OperationalError: Attempting to close database while transaction is open.
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 3255, in rollback
+    return self._state.conn.rollback()
+           │    └ <peewee._ConnectionLocal object at 0x00000219B24B3700>
+           └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 431, in rollback
+    self._execute_command(COMMAND.COM_QUERY, "ROLLBACK")
+    │    │                │       └ 3
+    │    │                └ <module 'pymysql.constants.COMMAND' from 'C:\\Users\\Administrator\\Envs\\mxshop_srv\\lib\\site-packages\\pymysql\\constants\...
+    │    └ <function Connection._execute_command at 0x00000219B224BE50>
+    └ <pymysql.connections.Connection object at 0x00000219B33769D0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 742, in _execute_command
+    raise err.InterfaceError(0, '')
+          │   └ <class 'pymysql.err.InterfaceError'>
+          └ <module 'pymysql.err' from 'C:\\Users\\Administrator\\Envs\\mxshop_srv\\lib\\site-packages\\pymysql\\err.py'>
+
+pymysql.err.InterfaceError: (0, '')
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x00000219B11E2E50>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 96108)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x00000219B11E2B80>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 96108)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 96108)>
+    │    │        │    └ (<weakref at 0x00000219B32CD270; to 'ThreadPoolExecutor' at 0x00000219B3152460>, <_queue.SimpleQueue object at 0x00000219B314...
+    │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 96108)>
+    │    └ <function _worker at 0x00000219B315B310>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 96108)>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\concurrent\futures\thread.py", line 80, in _worker
+    work_item.run()
+    │         └ <function _WorkItem.run at 0x00000219B315B430>
+    └ <concurrent.futures.thread._WorkItem object at 0x00000219B35043D0>
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib\concurrent\futures\thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │    │   │    │       │    └ {}
+             │    │   │    │       └ <concurrent.futures.thread._WorkItem object at 0x00000219B35043D0>
+             │    │   │    └ [<grpc._cython.cygrpc.RequestCallEvent object at 0x00000219B3395220>, <grpc._server._RPCState object at 0x00000219B3504700>, ...
+             │    │   └ <concurrent.futures.thread._WorkItem object at 0x00000219B35043D0>
+             │    └ <function _unary_response_in_pool at 0x00000219B318EDC0>
+             └ <concurrent.futures.thread._WorkItem object at 0x00000219B35043D0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\grpc\_server.py", line 552, in _unary_response_in_pool
+    response, proceed = _call_behavior(rpc_event, state, behavior,
+                        │              │          │      └ <bound method InventoryServicer.Sell of <inventory_srv.handler.inventory.InventoryServicer object at 0x00000219B3163CD0>>
+                        │              │          └ <grpc._server._RPCState object at 0x00000219B3504700>
+                        │              └ <grpc._cython.cygrpc.RequestCallEvent object at 0x00000219B3395220>
+                        └ <function _call_behavior at 0x00000219B318E9D0>
+
+> File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\grpc\_server.py", line 435, in _call_behavior
+    response_or_iterator = behavior(argument, context)
+                           │        │         └ <grpc._server._Context object at 0x00000219B3504880>
+                           │        └ goodsInfo {
+                           │            goodsId: 423
+                           │            num: 5
+                           │          }
+                           │          
+                           └ <bound method InventoryServicer.Sell of <inventory_srv.handler.inventory.InventoryServicer object at 0x00000219B3163CD0>>
+
+  File "C:\Users\Administrator\PycharmProjects\mxshop_srvs\inventory_srv\handler\inventory.py", line 41, in Sell
+    return empty_pb2.Empty()
+           │         └ <class 'google.protobuf.empty_pb2.Empty'>
+           └ <module 'google.protobuf.empty_pb2' from 'C:\\Users\\Administrator\\Envs\\mxshop_srv\\lib\\site-packages\\google\\protobuf\\e...
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 4126, in __exit__
+    return self._helper.__exit__(exc_type, exc_val, exc_tb)
+           │    │       │        │         │        └ <traceback object at 0x00000219B33A8A80>
+           │    │       │        │         └ OperationalError('Attempting to close database while transaction is open.')
+           │    │       │        └ <class 'peewee.OperationalError'>
+           │    │       └ <function _transaction.__exit__ at 0x00000219B2285DC0>
+           │    └ <peewee._transaction object at 0x00000219B3504640>
+           └ <peewee._atomic object at 0x00000219B3504280>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 4157, in __exit__
+    self.rollback(False)
+    │    └ <function _transaction.rollback at 0x00000219B2285CA0>
+    └ <peewee._transaction object at 0x00000219B3504640>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 4144, in rollback
+    self.db.rollback()
+    │    │  └ <function Database.rollback at 0x00000219B2280EE0>
+    │    └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+    └ <peewee._transaction object at 0x00000219B3504640>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 3255, in rollback
+    return self._state.conn.rollback()
+           │    └ <peewee._ConnectionLocal object at 0x00000219B24B3700>
+           └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 2873, in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+    │       │         │        │           │          └ <traceback object at 0x00000219B33A8B80>
+    │       │         │        │           └ (0, '')
+    │       │         │        └ InterfaceError(0, '')
+    │       │         └ <class 'peewee.InterfaceError'>
+    │       └ <class 'peewee.InterfaceError'>
+    └ <function reraise at 0x00000219B224ED30>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 183, in reraise
+    raise value.with_traceback(tb)
+          │     │              └ <traceback object at 0x00000219B33A8B80>
+          │     └ <method 'with_traceback' of 'BaseException' objects>
+          └ InterfaceError(0, '')
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\peewee.py", line 3255, in rollback
+    return self._state.conn.rollback()
+           │    └ <peewee._ConnectionLocal object at 0x00000219B24B3700>
+           └ <inventory_srv.settings.settings.ReconnectMysqlDatabase object at 0x00000219B2489AF0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 431, in rollback
+    self._execute_command(COMMAND.COM_QUERY, "ROLLBACK")
+    │    │                │       └ 3
+    │    │                └ <module 'pymysql.constants.COMMAND' from 'C:\\Users\\Administrator\\Envs\\mxshop_srv\\lib\\site-packages\\pymysql\\constants\...
+    │    └ <function Connection._execute_command at 0x00000219B224BE50>
+    └ <pymysql.connections.Connection object at 0x00000219B33769D0>
+
+  File "C:\Users\Administrator\Envs\mxshop_srv\lib\site-packages\pymysql\connections.py", line 742, in _execute_command
+    raise err.InterfaceError(0, '')
+          │   └ <class 'pymysql.err.InterfaceError'>
+          └ <module 'pymysql.err' from 'C:\\Users\\Administrator\\Envs\\mxshop_srv\\lib\\site-packages\\pymysql\\err.py'>
+
+peewee.InterfaceError: (0, '')
+2020-11-19 13:43:00.970 | INFO     | __main__:on_exit:26 - 注销 a408ef7e-297d-11eb-81f6-40b0760ebfa7 服务
+2020-11-19 13:43:01.038 | INFO     | __main__:on_exit:28 - 注销成功
